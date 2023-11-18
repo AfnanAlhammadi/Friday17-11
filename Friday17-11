@@ -1,0 +1,124 @@
+Q1 :
+
+Write a Java code to determine if a number is perfect, abundant, or deficient based on Nicomachus' (60 - 120 CE) classification scheme for positive integers. The Greek mathematician Nicomachus devised a classification scheme for positive integers, identifying each as belonging uniquely to the categories of perfect, abundant, or deficient based on their aliquot sum. The aliquot sum is defined as the sum of the factors of a number not including the number itself. For example, the aliquot sum of 15 is 1 + 3 + 5 = 9.
+• Perfect: aliquot sum = number
+6 is a perfect number because (1 + 2 + 3) = 6
+28 is a perfect number because (1 + 2 + 4 + 7 + 14) = 28
+• Abundant: aliquot sum > number
+12 is an abundant number because (1 + 2 + 3 + 4 + 6) = 16
+24 is an abundant number because (1 + 2 + 3 + 4 + 6 + 8 + 12) = 36
+• Deficient: aliquot sum < number
+8 is a deficient number because (1 + 2 + 4) = 7 Prime numbers are deficient
+
+
+
+public class NumberClassification {
+    public static void main(String[] args) {
+        int number = 28; // Replace with the number you want to classify
+        
+        int aliquotSum = calculateAliquotSum(number);
+        
+        if (aliquotSum == number) {
+            System.out.println("Perfect: aliquot sum = number");
+        } else if (aliquotSum > number) {
+            System.out.println("Abundant: aliquot sum > number");
+        } else {
+            System.out.println("Deficient: aliquot sum < number");
+        }
+    }
+    
+    public static int calculateAliquotSum(int number) {
+        int sum = 0;
+        
+        for (int i = 1; i <= number / 2; i++) {
+            if (number % i == 0) {
+                sum += i;
+            }
+        }
+        
+        return sum;
+    }
+}
+
+///////////////
+
+Q2 :
+
+Write a Java Code to determine if a triangle is equilateral, isosceles, or scalene. An equilateral triangle has all three sides the same length.
+An isosceles triangle has at least two sides the same length. (It is sometimes specified as having exactly two sides the same length, but for the purposes of this exercise we'll say at least two.)
+
+
+public class TriangleClassification {
+    public static void main(String[] args) {
+        int side1 = 5; // Replace with the length of the first side
+        int side2 = 5; // Replace with the length of the second side
+        int side3 = 5; // Replace with the length of the third side
+        
+        if (side1 == side2 && side2 == side3) {
+            System.out.println("Equilateral triangle");
+        } else if (side1 == side2 || side1 == side3 || side2 == side3) {
+            System.out.println("Isosceles triangle");
+        } else {
+            System.out.println("Scalene triangle");
+        }
+    }
+}
+
+/////////////////
+
+Q3 :
+
+
+3. Write a Java code to check if a number is an Armstrong number.
+A positive integer with digits p, q, r, s..., is known as an Armstrong number of order n if the following condition is fulfilled.
+pqrs... = pn + qn + rn + sn +....
+
+
+public class ArmstrongNumber {
+    public static void main(String[] args) {
+        int number = 153; 
+        
+        int order = String.valueOf(number).length();
+        
+        if (isArmstrongNumber(number, order)) {
+            System.out.println("The number is an Armstrong number.");
+        } else {
+            System.out.println("The number is not an Armstrong number.");
+        }
+    }
+    
+    public static boolean isArmstrongNumber(int number, int order) {
+        int sum = 0;
+        int temp = number;
+        
+        while (temp != 0) {
+            int digit = temp % 10;
+            sum += Math.pow(digit, order);
+            temp /= 10;
+        }
+        
+        return sum == number;
+    }
+}
+
+
+//////////////
+
+
+Q4 :
+
+Java Program to Print Square Star Pattern
+
+
+public class SquareStarPattern {
+    public static void main(String[] args) {
+        int size = 5; // Replace with the desired size of the square
+        
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
+}
